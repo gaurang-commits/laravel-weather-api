@@ -21,6 +21,7 @@ Pull weather from API
 ```bash
 php artisan pull:weather
 ```
+Serve the application
 ```bash
 php artisan service
 ```
