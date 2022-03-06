@@ -122,7 +122,6 @@ class WeatherTest extends TestCase
      */
     public function tearDown(): void
     {
-        Artisan::call('migrate:reset');
         parent::tearDown();
     }
 }
