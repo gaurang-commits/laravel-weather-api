@@ -8,6 +8,10 @@ change `.env.example` to `.env`
 ```bash
 php artisan key:generate
 ```
+Initialize API documentation for testing
+```bash
+php artisan l5-swagger:generate
+```
 ## Usage
 Intitalize Queue
 ```bash
