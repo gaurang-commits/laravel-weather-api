@@ -1,0 +1,58 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel Weather App Documentation",
+        "description": "Laravel Weather App API by Gaurang Sharma",
+        "contact": {
+            "email": "gaurang@iogravity.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api/v1",
+            "description": "Demo API Server"
+        }
+    ],
+    "paths": {
+        "/get-weather": {
+            "get": {
+                "tags": [
+                    "Weather"
+                ],
+                "summary": "Get Weather Details",
+                "description": "Returns weather details",
+                "operationId": "getWeatherInfo",
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "date",
+                        "required": true,
+                        "example": "2022-03-03"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Exception Occurred"
+                    },
+                    "422": {
+                        "description": "Invalid Data"
+                    },
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Weather",
+            "description": "API Endpoints of Projects"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
