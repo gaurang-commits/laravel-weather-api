@@ -1,20 +1,36 @@
 <?php
 namespace Packages\WeatherApi;
 
-use Packages\WeatherApi\WeatherApiInterface;
+use Packages\WeatherApi\Interfaces\WeatherApiInterface;
 use App\Helpers\RestApiHelper;
 use App\Helpers\Facades\ApplicationHelperFacade as Helper;
 use GuzzleHttp\Client;
 class WeatherApiHandler implements WeatherApiInterface
 {
-    protected $endPoint;
+    /**
+     * The api handler instance
+     *
+     * @var Client
+     */
     private $apiHandler;
 
+    /**
+     * Create a new Weather Api instance.
+     *
+     * @param Client $client
+     * @return void
+     */
     public function __construct(Client $client)
     {
         $this->apiHandler =  $client;
     }
 
+    /**
+     * Pull geo coding data from API
+     *
+     * @param $location
+     * @return json
+     */
     public function getGeoCodingData($location)
     {
         $params = [
@@ -27,7 +43,12 @@ class WeatherApiHandler implements WeatherApiInterface
         return json_decode($this->apiHandler->request('GET', config('weather-api.GEOCODING_ENDPOINT'), $params)->getBody());
     }
 
-
+    /**
+     * Pull historic weather from API
+     *
+     * @param $params
+     * @return json
+     */
     public function getWeatherByDate(...$args)
     {
         $params = [
@@ -42,6 +63,12 @@ class WeatherApiHandler implements WeatherApiInterface
         return json_decode($this->apiHandler->request('GET', config('weather-api.FORECAST_HISTORY_ENDPOINT'), $params)->getBody());
     }
 
+    /**
+     * Pull current weather from API
+     *
+     * @param $city
+     * @return json
+     */
     public function getCurrentWeatherData($city)
     {
         $params = [

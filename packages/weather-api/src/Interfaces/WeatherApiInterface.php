@@ -1,5 +1,5 @@
 <?php
-namespace Packages\WeatherApi;
+namespace Packages\WeatherApi\Interfaces;
 
 interface WeatherApiInterface
 {

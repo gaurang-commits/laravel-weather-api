@@ -43,7 +43,6 @@ class LogWeatherData implements ShouldQueue
                 $date = Helper::convertToDateString($data->dt);
                 //Log data to DB
                 $this->weatherRepository->updateCreateDataToDb($city, $cityId, $date, $data);
-                return true;
             } else {
                 //If request is from JOB, Iterate over the data
                 foreach ($event->weatherData->list as $value) {
